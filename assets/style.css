@@ -7,7 +7,7 @@
 body{
     /* background-color: rgb(240, 176, 15); */
     background-image: linear-gradient(to bottom right, rgb(240, 176, 15) 80%, black 20% );
-    color: black;
+    color: white;
 }
 
 .header{
