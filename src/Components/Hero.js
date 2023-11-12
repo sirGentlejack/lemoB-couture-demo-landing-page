@@ -1,9 +1,10 @@
-import React from 'react'
-import Lemob from '../images/Lemob.png'
+import React from "react";
+import Lemob from "../images/Lemob.png";
+import {FaFacebookF, FaInstagram, FaWhatsapp} from 'react-icons/fa';
 
-export default function Hero(){
-    return(
-        <section class="home">
+export default function Hero() {
+  return (
+    <section class="home">
       <div class="home-content">
         <h1>LemoB Couture</h1>
         <h3>Fashion Home</h3>
@@ -17,22 +18,26 @@ export default function Hero(){
         </p>
         <div class="btn-box">
           <a href="#">Order now</a>
-          <a href="#">Our prices</a>
+          <a href="#">Gallery</a>
         </div>
       </div>
 
       <div class="home-sci">
-        <a href="#"><i class="bx bxl-facebook"></i></a>
-        <a href="#"><i class="bx bxl-twitter"></i></a>
-        <a href="#"><i class="bx bxl-linkedin"></i></a>
+        
+        <a href="#">
+          <FaFacebookF />
+        </a>
+        
+         <a href="#">
+          <FaInstagram/>
+        </a> 
+        <a href="#">
+          <FaWhatsapp />
+        </a>
       </div>
       <span class="home-imghover">
-        <img
-          src={Lemob}
-          alt="lemob logo"
-          width="450vw"
-        />
+        <img src={Lemob} alt="lemob logo" width="450vw" />
       </span>
     </section>
-    )
+  );
 }
