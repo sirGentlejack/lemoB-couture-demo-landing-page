@@ -1,6 +1,7 @@
 import React, { useRef} from "react";
 import { FiMenu } from "react-icons/fi";
 import { TiCancel } from "react-icons/ti";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const navRef = useRef();
@@ -10,18 +11,29 @@ export default function Navbar() {
   }
   return (
     
-      <div class="header">
-        <a href="#" class="logo">
+      <div className="header">
+        <a href="#" className="logo">
           LemoB.
         </a>
-        <nav ref={navRef}class="navbar">
-          <a href="#" class="active">
-            Home
-          </a>
-          <a href="#">About</a>
-          <a href="#">Services</a>
-          <a href="#">Contact</a>
-          <a href="#">Portfolio</a>
+        <nav ref={navRef}className="navbar">
+        <ul>
+          <li>
+            <Link to="/" className="active">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About Us</Link>
+          </li>
+          <li>
+            <Link to="/gallery">Gallery</Link>
+          </li>
+          <li>
+            <Link to="/blog">Blog</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact</Link>
+          </li>
+        </ul>
+      {/* </nav> */}
           <button className="navbar_btn navbar_close">
             <TiCancel onClick={showNavbar} />
           </button>
