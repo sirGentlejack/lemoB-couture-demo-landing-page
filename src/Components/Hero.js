@@ -1,6 +1,8 @@
 import React from "react";
 import Lemob from "../images/Lemob.png";
-import {FaFacebookF, FaInstagram, FaWhatsapp} from 'react-icons/fa';
+// import SocialContacts from "./SocialContacts";
+import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
+
 
 export default function Hero() {
   return (
@@ -17,24 +19,27 @@ export default function Hero() {
           numquam culpa itaque omnis animi blanditiis delectus autem?
         </p>
         <div class="btn-box">
-          <a href="#">Order now</a>
-          <a href="#">Gallery</a>
+          <a href="#contact" target="_self" rel="noreferrer">Order now</a>
+          <a href="#gallery" target="_self" rel="noreferrer">Gallery</a>
         </div>
       </div>
 
-      <div class="home-sci">
-        
-        <a href="#">
-          <FaFacebookF />
-        </a>
-        
-         <a href="#">
-          <FaInstagram/>
-        </a> 
-        <a href="#">
-          <FaWhatsapp />
-        </a>
+      <div>
+        {/* <SocialContacts /> */}
+        <div class="home-sci">
+      <a href="#" target="_blank" rel="noreferrer">
+        <FaFacebookF />
+      </a>
+
+      <a href="#" target="_blank" rel="noreferrer">
+        <FaInstagram />
+      </a>
+      <a href="#" target="_blank" rel="noreferrer">
+        <FaWhatsapp />
+      </a>
+    </div>
       </div>
+
       <span class="home-imghover">
         <img src={Lemob} alt="lemob logo" width="450vw" />
       </span>

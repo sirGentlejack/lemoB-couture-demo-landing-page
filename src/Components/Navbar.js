@@ -33,7 +33,6 @@ export default function Navbar() {
             <Link to="/contact">Contact</Link>
           </li>
         </ul>
-      {/* </nav> */}
           <button className="navbar_btn navbar_close">
             <TiCancel onClick={showNavbar} />
           </button>
