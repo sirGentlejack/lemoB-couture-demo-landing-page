@@ -18,7 +18,7 @@ export default function Navbar() {
         <nav ref={navRef}className="navbar">
         <ul>
           <li>
-            <Link to="/" className="active">Home</Link>
+            <Link to="/" >Home</Link>
           </li>
           <li>
             <Link to="/about">About Us</Link>

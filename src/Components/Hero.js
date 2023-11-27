@@ -24,20 +24,20 @@ export default function Hero() {
             Gallery
           </a>
         </div>
-      </div>
 
-      <div className="top-socials">
-        <div class="home-sci">
-          <a href="#" target="_blank" rel="noreferrer">
-            <FaFacebookF />
-          </a>
+        <div className="top-socials">
+          <div class="home-sci">
+            <a href="#" target="_blank" rel="noreferrer">
+              <FaFacebookF />
+            </a>
 
-          <a href="#" target="_blank" rel="noreferrer">
-            <FaInstagram />
-          </a>
-          <a href="#" target="_blank" rel="noreferrer">
-            <FaWhatsapp />
-          </a>
+            <a href="#" target="_blank" rel="noreferrer">
+              <FaInstagram />
+            </a>
+            <a href="#" target="_blank" rel="noreferrer">
+              <FaWhatsapp />
+            </a>
+          </div>
         </div>
       </div>
 

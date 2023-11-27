@@ -17,19 +17,22 @@ export default function Bottom() {
           </button>
         </fieldset>
       </form>
+      
+      <div>
+        <h3 className="sub_heading">Contact us:-</h3>
+        <div className=" bottom-socials">
+          <div className="home-sci ">
+            <a href="#" target="_blank" rel="noreferrer">
+              <FaFacebookF />
+            </a>
 
-      <div className=" bottom-socials">
-        <div className="home-sci ">
-          <a href="#" target="_blank" rel="noreferrer">
-            <FaFacebookF />
-          </a>
-
-          <a href="#" target="_blank" rel="noreferrer">
-            <FaInstagram />
-          </a>
-          <a href="#" target="_blank" rel="noreferrer">
-            <FaWhatsapp />
-          </a>
+            <a href="#" target="_blank" rel="noreferrer">
+              <FaInstagram />
+            </a>
+            <a href="#" target="_blank" rel="noreferrer">
+              <FaWhatsapp />
+            </a>
+          </div>
         </div>
       </div>
     </div>

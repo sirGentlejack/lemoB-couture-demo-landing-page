@@ -370,6 +370,7 @@ body {
   align-items: center;
   background: rgb(240, 176, 15);
   padding: 30px;
+  gap: 20px;
 }
 form {
   width: 600px;
@@ -402,7 +403,7 @@ fieldset {
 }
 
 /* mobile view 432*/
-@media screen and (max-width: 7soci00px) {
+@media screen and (max-width: 700px) {
   .home {
     background-image: linear-gradient(
       to bottom right,
@@ -506,7 +507,12 @@ fieldset {
     padding: 10px 0px 10px 10px;
   }
   .footer {
+    display: block;
   }
+.bottom-socials {
+  left: 50px;
+  padding: 0px 10px;
+}
   form {
     max-width: 300px;
   }
