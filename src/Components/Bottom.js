@@ -17,9 +17,9 @@ export default function Bottom() {
           </button>
         </fieldset>
       </form>
-      
-      <div>
-        <h3 className="sub_heading">Contact us:-</h3>
+      <br></br>
+      <div className="contact-us">
+        <h3>Contact us:-</h3>
         <div className=" bottom-socials">
           <div className="home-sci ">
             <a href="#" target="_blank" rel="noreferrer">
