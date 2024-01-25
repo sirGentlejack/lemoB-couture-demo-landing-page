@@ -9,12 +9,19 @@ export default function Hero() {
         <h1>LemoB Couture</h1>
         <h3>Fashion Home</h3>
         <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos,
-          molestias. Quam aliquid, quaerat, itaque, dolore perferendis earum
-          reiciendis animi inventore voluptatum sed beatae deserunt quod sint
-          tenetur? Facilis sint, dolorum voluptates doloribus praesentium, et
-          dolores sapiente corrupti, qui esse facere excepturi asperiores
-          numquam culpa itaque omnis animi blanditiis delectus autem?
+        [Your Brand Name]
+Crafting Elegance, Tailoring Style.
+
+Welcome to [Your Brand Name], where every stitch is a statement and style is an art. Discover bespoke tailoring that transcends trends, fits like a dream, and reflects your unique persona.
+
+Why Choose Us?
+✨ Impeccable Craftsmanship
+✨ Unparalleled Fit
+✨ Timeless Elegance
+
+Explore Now. Elevate Your Style.
+
+[Explore Button]
         </p>
         <div class="btn-box">
           <a href="#contact" target="_self" rel="noreferrer">
