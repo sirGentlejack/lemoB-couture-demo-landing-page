@@ -5,29 +5,40 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+/* rgb(240, 176, 15) */
 body {
-  background-color: rgb(240, 176, 15);
+  background-color: whitesmoke;
   font-family: "Poppins", sans-serif;
   color: black;
+  max-width: 1200px;
+  margin: auto;
 }
 .page {
   padding-top: 70px;
+  margin: auto;
 }
 
 .header {
   position: fixed;
-  top: 0;
-  left: 0;
+   /* top: 0; */
+  /* left: 0;  */
   width: 100%;
-  padding: 15px 0%;
-  background: transparent;
+  padding: 15px 0;
+  background: rgb(240, 176, 15);
   display: flex;
   justify-content: space-around;
   align-items: center;
   z-index: 100;
 }
-
+.mobile-header{
+  display: none;
+}
+.header2{
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 70px;
+  background: rgb(240, 176, 15);
+}
 .logo {
   position: relative;
   font-size: 25px;
@@ -65,7 +76,9 @@ body {
 
 .navbar ul {
   list-style: none;
-  display: flex;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .navbar_btn {
@@ -80,11 +93,12 @@ body {
   font-size: 1.8rem;
 }
 
-.home {
+/* hero */
+.hero {
   height: 100vh;
   display: flex;
   align-items: center;
-  padding: 0 15%;
+  padding: 0 10%;
   background-image: linear-gradient(
     to bottom right,
     rgb(240, 176, 15) 80%,
@@ -92,18 +106,18 @@ body {
   );
 }
 
-.home-content {
-  max-width: 500px;
+.hero-content {
+  max-width: 550px;
 }
 
-.home-content h1 {
+.hero-content h1 {
   position: relative;
   font-size: 56px;
   font-weight: 700;
   line-height: 1.2;
 }
 
-.home-content h1::before {
+.hero-content h1::before {
   content: "";
   position: absolute;
   top: 0;
@@ -115,14 +129,14 @@ body {
   animation-delay: 1s;
 }
 
-.home-content h3 {
+.hero-content h3 {
   position: relative;
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 700;
   color: whitesmoke;
 }
 
-.home-content h3::before {
+.hero-content h3::before {
   content: "";
   position: absolute;
   top: 0;
@@ -134,13 +148,13 @@ body {
   animation-delay: 1.3s;
 }
 
-.home-content p {
+.hero-content p {
   position: relative;
   font-size: 16px;
   margin: 20px 0 40px;
 }
 
-.home-content p::before {
+.hero-content p::before {
   content: "";
   position: absolute;
   top: 0;
@@ -152,7 +166,7 @@ body {
   animation-delay: 1.6s;
 }
 
-.home-content .btn-box {
+.hero-content .btn-box {
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -160,7 +174,7 @@ body {
   height: 50px;
 }
 
-.home-content .btn-box::before {
+.hero-content .btn-box::before {
   content: "";
   position: absolute;
   top: 0;
@@ -226,14 +240,14 @@ body {
   width: 100%;
 }
 
-.home-sci {
+.hero-sci {
   position: absolute;
   width: 170px;
   display: flex;
   justify-content: space-between;
 }
 
-.home-sci::before {
+.hero-sci::before {
   content: "";
   position: absolute;
   top: 0;
@@ -246,7 +260,7 @@ body {
   z-index: 2;
 }
 
-.home-sci a {
+.hero-sci a {
   position: relative;
   display: inline-flex;
   justify-content: center;
@@ -264,11 +278,11 @@ body {
   transition: 0.5s;
 }
 
-.home-sci a {
+.hero-sci a {
   color: whitesmoke;
 }
 
-.home-sci a::before {
+.hero-sci a::before {
   content: "";
   position: absolute;
   top: 0;
@@ -280,20 +294,20 @@ body {
   transition: 0.5s;
 }
 
-.home-sci a:hover::before {
+.hero-sci a:hover::before {
   width: 100%;
 }
 .top-socials {
   margin-top: 50px;
 }
 
-.home-imghover {
-  position: absolute;
+.hero-imghover {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   top: 0;
-  right: 200px;
+  /* right: 200px; */
   height: 100%;
   background: transparent;
   transition: 3s;
@@ -302,12 +316,12 @@ body {
   pointer-events: none;
 }
 
-.home-imghover:hover {
+.hero-imghover:hover {
   background: black;
   opacity: -1;
 }
 
-.home-imghover::after {
+.hero-imghover::after {
   content: "";
   position: absolute;
   top: 0;
@@ -331,6 +345,9 @@ body {
     pointer-events: auto;
   }
 }
+
+
+/* gallery */
 
 .Gallery {
   background-color: whitesmoke;
@@ -408,7 +425,7 @@ fieldset {
 
 /* mobile view */
 @media screen and (max-width: 700px) {
-  .home {
+  .hero {
     background-image: linear-gradient(
       to bottom right,
       rgb(240, 176, 15) 75%,
@@ -419,6 +436,9 @@ fieldset {
     display: flex;
     justify-content: space-between;
     background: rgb(240, 176, 15);
+  }
+  .wide-header{
+    display: none;
   }
   .logo {
     padding-left: 15px;
@@ -466,23 +486,24 @@ fieldset {
     color: rgb(240, 176, 15);
     font-size: 1.5rem;
   }
-  /* home */
-  .home {
+
+  /* hero */
+  .hero {
     display: block;
     padding: 100px 5%;
   }
-  .home-content h1 {
+  .hero-content h1 {
     font-size: 42px;
     font-weight: 900;
   }
-  .home-content h3 {
+  .hero-content h3 {
     font-size: 30px;
     font-weight: 400;
   }
-  .home-content p {
+  .hero-content p {
     font-size: 17px;
   }
-  .home-imghover {
+  .hero-imghover {
     display: none;
   }
 
@@ -529,7 +550,7 @@ fieldset {
   }
 }
 @media screen and (max-width: 900px) {
-  .home-imghover {
+  .hero-imghover {
   display: none;
 }
 .footer {

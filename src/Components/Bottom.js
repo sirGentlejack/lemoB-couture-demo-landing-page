@@ -21,7 +21,7 @@ export default function Bottom() {
       <div className="contact-us">
         <h3>Contact us:-</h3>
         <div className=" bottom-socials">
-          <div className="home-sci ">
+          <div className="hero-sci ">
             <a href="#" target="_blank" rel="noreferrer">
               <FaFacebookF />
             </a>

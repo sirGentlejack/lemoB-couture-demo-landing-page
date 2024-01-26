@@ -4,9 +4,11 @@ import GallerySection from "../Components/GallerySection";
 
 export default function Home() {
   return (
-    <div className="page">
+    <>
       <Hero />
-      <GallerySection />
-    </div>
+      <div className="page">
+        <GallerySection />
+      </div>
+    </>
   );
 }
