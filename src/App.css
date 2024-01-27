@@ -95,7 +95,7 @@ body {
 
 /* hero */
 .hero {
-  height: 100vh;
+  height: 85vh;
   display: flex;
   align-items: center;
   padding: 0 10%;
@@ -425,13 +425,6 @@ fieldset {
 
 /* mobile view */
 @media screen and (max-width: 700px) {
-  .hero {
-    background-image: linear-gradient(
-      to bottom right,
-      rgb(240, 176, 15) 75%,
-      black 25%
-    );
-  }
   .header {
     display: flex;
     justify-content: space-between;
@@ -491,9 +484,16 @@ fieldset {
   .hero {
     display: block;
     padding: 100px 5%;
+      height: 100vh;
+      background-image: linear-gradient(
+        to bottom right,
+        rgb(240, 176, 15) 75%,
+        black 25%
+      );
+    
   }
   .hero-content h1 {
-    font-size: 42px;
+    font-size: 38px;
     font-weight: 900;
   }
   .hero-content h3 {
