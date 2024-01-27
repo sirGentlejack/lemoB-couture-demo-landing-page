@@ -4,34 +4,75 @@ import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
 
 export default function Bottom() {
   return (
-    <div className="footer">
-      <form id="contact">
-        <fieldset>
-          <legend className="Gallery">Reach out to US!</legend>
-          <input type="Email" className="input" placeholder="Email" />
-          <br />
-          <textarea className="input" placeholder="Comments"></textarea>
-          <br />
-          <button type="submit" className="input_btn">
-            Send
-          </button>
-        </fieldset>
-      </form>
-      <br></br>
-      <div className="contact-us">
-        <h3>Contact us:-</h3>
-        <div className=" bottom-socials">
-          <div className="hero-sci ">
-            <a href="#" target="_blank" rel="noreferrer">
-              <FaFacebookF />
-            </a>
+    <div className="bottom">
+      <div className="scroll-container">
+        <p className="bottom-para">
+          <i>
+            <b>
+              Welcome to a world where fashion meets craftsmanship. Welcome to
+              LemoB Couture.
+            </b>
+          </i>
+        </p>
+      </div>
+      <div className="bottom2">
+        <div style={{ textAlign: "center" }}>
+          <h2>Working Days</h2>
+          <table style={{ width: "300px" }}>
+            <tr>
+              <th>
+                <b>Days</b>
+              </th>
+              <th>
+                <b>Time</b>
+              </th>
+            </tr>
+            <tr>
+              <td>Monday</td>
+              <td>08:00 - 18:00</td>
+            </tr>
+            <tr>
+              <td>Tuesday</td>
+              <td>08:00 - 18:00</td>
+            </tr>
+            <tr>
+              <td>Wednesday</td>
+              <td>08:00 - 18:00</td>
+            </tr>
+            <tr>
+              <td>Thursday</td>
+              <td>08:00 - 18:00</td>
+            </tr>
+            <tr>
+              <td>Friday</td>
+              <td>08:00 - 18:00</td>
+            </tr>
+            <tr>
+              <td>Sarturday</td>
+              <td>08:00 - 15:00</td>
+            </tr>
+            <tr>
+              <td>Sunday</td>
+              <td>Closed</td>
+            </tr>
+          </table>
+        </div>
+        <br></br>
+        <div className="contact-us">
+          <h3>Contact us:-</h3>
+          <div className=" bottom-socials">
+            <div className="hero-sci ">
+              <a href="/" target="_blank" rel="noreferrer">
+                <FaFacebookF />
+              </a>
 
-            <a href="#" target="_blank" rel="noreferrer">
-              <FaInstagram />
-            </a>
-            <a href="#" target="_blank" rel="noreferrer">
-              <FaWhatsapp />
-            </a>
+              <a href="/" target="_blank" rel="noreferrer">
+                <FaInstagram />
+              </a>
+              <a href="/" target="_blank" rel="noreferrer">
+                <FaWhatsapp />
+              </a>
+            </div>
           </div>
         </div>
       </div>

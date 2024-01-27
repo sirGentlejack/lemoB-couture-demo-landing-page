@@ -1,18 +1,18 @@
 const Data1 =[
     {
         id: 1,
-        coverImg:"Lemob.png",
-        label: "Label"
+        coverImg:"BlueFatherSonKaftan.jpg",
+        label: "Blue Father & Son Kaftan"
     },
     {
         id: 2,
-        coverImg:"Lemob.png",
-        label: "Label"
+        coverImg:"GoldKaftan.jpg",
+        label: "Gold Kaftan"
     },
     {
         id: 3,
-        coverImg:"Lemob.png",
-        label: "Label"
+        coverImg:"BlackKaftan.jpg",
+        label: "Black Kaftan"
     }
 ];
 

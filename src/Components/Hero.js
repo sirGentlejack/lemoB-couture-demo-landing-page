@@ -1,5 +1,5 @@
 import React from "react";
-import Lemob from "../images/Lemob.png";
+import Bluekaftan from "../images/BlueKaftan.jpg";
 import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -16,13 +16,13 @@ export default function Hero() {
             fits like a dream, and reflects your unique persona.
           </p>
           <b>Why Choose Us?</b>
-          <ul style={{listStyleType:"square"}}>
+          <ul style={{listStyleType:"square",marginLeft:"30px"}}>
             <li> Impeccable Craftsmanship</li>
             <li> Unparalleled Fit</li>
             <li> Timeless Elegance</li>
           </ul>
-          <hr style={{border:"5px dashed white",margin:"20px"}}/>
-          <i>Explore Now. Elevate Your Style.</i>
+          <hr style={{border:"2px dashed black",margin:"20px"}}/>
+          <i>Explore Now. Elevate Your<span style={{color:"white"}}> Style.</span></i>
         </p>
         <div class="btn-box">
           <Link href="#contact" target="_self" rel="noreferrer">
@@ -50,7 +50,7 @@ export default function Hero() {
       </div>
 
       <span class="hero-imghover">
-        <img src={Lemob} alt="lemob logo" width="400vw" />
+        <img src={Bluekaftan} alt="lemob logo" width="400vw" />
       </span>
     </section>
   );

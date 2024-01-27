@@ -1,6 +1,9 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
 export default function About() {
   return (
-    <div className="page">
+    <div className="page about-us-page">
       <h1>Welcome to LemoB Couture</h1>
       <div className="about-page-content">
         <div className="about-page-content-sub1">
@@ -30,18 +33,21 @@ export default function About() {
           <p>
             At LemoB Couture, we believe in timeless elegance. Our designs blend
             classic sophistication with contemporary trends, ensuring your
-            wardrobe stands the test of time. From crisp suits to casual chic,
+            wardrobe stands the test of time. From crisp kaftan to casual chic,
             we offer a range of styles that suit every occasion.
           </p>
         </div>
         <div className="about-page-content-sub2">
           <h3>Explore Our Collections</h3>
-          <ul>
-            <li>
+          <ul style={{ listStyle: "none" }}>
+            {/* <li>
               ✨<b>Suits:</b> Impeccable tailoring for the modern gentleman.
+            </li> */}
+            <li>
+              ✨<b>Agbada:</b> Impeccable tailoring for the modern gentleman.
             </li>
             <li>
-              ✨<b>Shirts:</b> From formal to casual, find the perfect shirt for
+              ✨<b>Kaftan:</b> From formal to casual, find the perfect outfit for
               every moment.
             </li>
             <li>
@@ -61,7 +67,7 @@ export default function About() {
             craftsmanship – the perfect partnership.
           </p>
           <h3>Why Choose LemoB Couture?</h3>
-          <ul>
+          <ul style={{ listStyle: "none" }}>
             <li>
               ✨ Unmatched Quality: Every garment is crafted with the finest
               materials and attention to detail.
@@ -77,22 +83,17 @@ export default function About() {
           </ul>
         </div>
       </div>
-      <h3>Get Started</h3>
-      <p>
-        Ready to elevate your style? Schedule a consultation with our expert
-        tailors today. Experience the luxury of bespoke fashion at LemoB
-        Couture.
-      </p>
-      <button>Get Started</button>
-
-      <p>
-        <i>
-          <b>
-            Welcome to a world where fashion meets craftsmanship. Welcome to
-            LemoB Couture.
-          </b>
-        </i>
-      </p>
+      <div className="about-page-content2">
+        <h3 style={{ marginTop: "30px" }}>Get Started</h3>
+        <p>
+          Ready to elevate your style? Schedule a consultation with our expert
+          tailors today. Experience the luxury of bespoke fashion at LemoB
+          Couture.
+        </p>
+        <Link to="/contact" className=" input_btn">
+          <b>Get Started</b>
+        </Link>
+      </div>
       {/* Feel free to customize the text according to the unique aspects and offerings of your men's tailoring fashion brand. */}
     </div>
   );

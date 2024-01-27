@@ -13,8 +13,9 @@ export default function Navbar() {
   }
   return (
     <>
+              {/* mobile screens */}
       <div className="header mobile-header">
-      <img src={Lemob} alt="lemob logo" width="100vw" />
+      <img src={Lemob} alt="lemob logo"  width="50vw"style={{marginLeft:" 20px"}} />
 
         <nav ref={navRef} className="navbar">
           <ul>
@@ -43,11 +44,12 @@ export default function Navbar() {
         </button>
       </div>
 
+              {/* wide screens */}
       <div className="header2 wide-header">
         {/* <a href="/" className="logo">
           LemoB.
         </a> */}
-        <img src={Lemob} alt="lemob logo" width="100vw" />
+        <img src={Lemob} alt="lemob logo" width="80vw" />
         <nav className="navbar">
         <ul>
           <li>
