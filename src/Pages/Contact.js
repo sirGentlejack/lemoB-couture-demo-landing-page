@@ -1,12 +1,22 @@
 export default function Contact() {
   return (
-    <div className="page">
-      <form id="contact">
+    <div className="page contact-page">
+      <form className="contact-form">
         <fieldset>
-          <legend className="Gallery">Reach out to US!</legend>
-          <input type="Email" className="input" placeholder="Email" />
+          <legend className="contact-form-legend">
+            <strong>Reach out to US!</strong>
+          </legend>
+          <input
+            type="Email"
+            className="contact-form-input"
+            placeholder="Email"
+          />
           <br />
-          <textarea className="input" placeholder="Comments"></textarea>
+          <textarea
+            className="contact-form-input"
+            placeholder="Comments"
+            style={{fontSize:"20px",height:"200px"}}
+          ></textarea>
           <br />
           <button type="submit" className="input_btn">
             Send

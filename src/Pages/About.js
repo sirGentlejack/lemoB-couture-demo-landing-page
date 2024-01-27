@@ -55,7 +55,7 @@ export default function About() {
               collection of casual essentials.
             </li>
             <li>
-              ✨ <b>Accessories:</b> Add the finishing touch with our curated
+              ✨<b>Accessories:</b> Add the finishing touch with our curated
               selection of accessories.
             </li>
           </ul>
