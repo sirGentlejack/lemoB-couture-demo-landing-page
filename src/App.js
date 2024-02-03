@@ -6,7 +6,6 @@ import Home from "../src/Pages/Home";
 import Gallery from "./Pages/Gallery";
 import Blog from "./Pages/Blog";
 import Contact from "./Pages/Contact";
-
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
