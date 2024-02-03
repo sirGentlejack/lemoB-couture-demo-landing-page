@@ -85,8 +85,8 @@ export default function About() {
       </div>
       <div className="about-page-content2">
         <h3 style={{ marginTop: "30px" }}>Get Started</h3>
-        <p>
-          Ready to elevate your style? Schedule a consultation with our expert
+        <p style={{ padding: "15px",textAlign:"center" }}>
+          Ready to elevate your style? <br></br>Schedule a consultation with our expert
           tailors today. Experience the luxury of bespoke fashion at LemoB
           Couture.
         </p>

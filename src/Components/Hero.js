@@ -25,10 +25,10 @@ export default function Hero() {
           <i>Explore Now. Elevate Your<span style={{color:"white"}}> Style.</span></i>
         </p>
         <div class="btn-box">
-          <Link href="#contact" target="_self" rel="noreferrer">
+          <Link to="/contact" >
             Order now
           </Link>
-          <Link href="#gallery" target="_self" rel="noreferrer">
+          <Link to="/gallery" >
             Explore
           </Link>
         </div>
