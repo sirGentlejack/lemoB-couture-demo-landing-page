@@ -16,7 +16,7 @@ export default function TestimonialsSection(props) {
   };
   return (
     <div className="Testimonials" id="testimonials">
-      <h3 className="sub-heading">Testimonials</h3>
+      <h3 className="sub_heading">Testimonials</h3>
       <div className="Testimonials-big-box">
         <button className="prev slider-btn" onClick={Prev}>
           <svg

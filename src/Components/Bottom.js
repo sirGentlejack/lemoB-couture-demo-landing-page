@@ -57,7 +57,7 @@ export default function Bottom() {
             </tr>
           </table>
         </div>
-        <br></br>
+        
         <div className="contact-us">
           <h3>Contact us:-</h3>
           <div className=" bottom-socials">
