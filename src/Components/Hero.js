@@ -35,16 +35,16 @@ export default function Hero() {
 
         <div className="top-socials">
           <div class="hero-sci">
-            <Link href="#" target="_blank" rel="noreferrer">
+            <a href="/" target="_blank" rel="noreferrer">
               <FaFacebookF />
-            </Link>
+            </a>
 
-            <Link href="#" target="_blank" rel="noreferrer">
+            <a href="/" target="_blank" rel="noreferrer">
               <FaInstagram />
-            </Link>
-            <Link href="#" target="_blank" rel="noreferrer">
+            </a>
+            <a href="/" target="_blank" rel="noreferrer">
               <FaWhatsapp />
-            </Link>
+            </a>
           </div>
         </div>
       </div>

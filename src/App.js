@@ -7,6 +7,7 @@ import Gallery from "./Pages/Gallery";
 import Blog from "./Pages/Blog";
 import Contact from "./Pages/Contact";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Signin from "./Pages/Signin";
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/signin" element={<Signin />} />
+
         </Routes>
 
         <Bottom />
