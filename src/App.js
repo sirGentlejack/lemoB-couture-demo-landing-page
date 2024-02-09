@@ -6,8 +6,9 @@ import Home from "../src/Pages/Home";
 import Gallery from "./Pages/Gallery";
 import Blog from "./Pages/Blog";
 import Contact from "./Pages/Contact";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Navigate, } from "react-router-dom";
 import Signin from "./Pages/Signin";
+import Dashboard from "./Pages/Dashboard";
 
 function App() {
   return (
@@ -23,7 +24,8 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/signin" element={<Signin />} />
-
+          <Route path="/dashboard" component={Dashboard} />
+          <Route path="*" element={<Navigate to="/dashboard" />} />
         </Routes>
 
         <Bottom />

@@ -1,34 +1,46 @@
 import React, { useState } from "react";
-// import {auth} from 
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { app } from "../Components/firebase";
 
 export default function Signin() {
   const [isSigningUp, setIsSigningUp] = useState(true);
-//   for signin authetication
-const [fullName, setFullName] = useState("")
+  //   for signin authetication
+  const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-//   to toggle between forms
+  const navigate = useNavigate();
+
+  //   to toggle between forms
   const toggleForm = () => {
     setIsSigningUp(!isSigningUp);
   };
 
-//   form authetication
-  const handleAuthentication = async(e) => {
-    e.preventDefault();
+  //   form authetication
+  const handleAuthentication = async (e) => {
+    e.preventDefault(); // Add this line to prevent default form submission behavior
 
-    // try {
-    //     if(isSigningUp) {
-    //         // sign up
-    //         await auth.createUserWithEmailAndPassword(email, password);
-    //     } else{
-    //         // sign in
-    //         await auth.signInWithEmailAndPassword(email, password);
-    //     }
-    //     // Authentication successful, you can redirect or perform additional actions here   
-    // } catch (error) {
-    //     console.error("Authentication Error: ", error.message);
-    // }
+    const auth = getAuth(app);
+
+    try {
+      if (isSigningUp) {
+        // sign up
+        await createUserWithEmailAndPassword(auth, email, password);
+        // Authentication successful, you can redirect or perform additional actions here
+        navigate("/dashboard"); // Redirect to the dashboard
+      } else {
+        // sign in
+        await auth.signInWithEmailAndPassword(auth, email, password);
+      }
+    } catch (error) {
+      console.error("Authentication Error: ", error.message);
+    }
+
+    // Clear the form fields after authentication attempt
+    setFullName("");
+    setEmail("");
+    setPassword("");
   };
 
   return (
@@ -37,11 +49,12 @@ const [fullName, setFullName] = useState("")
         // signup
         <div className="signup">
           <h2 className="signin-header">Sign Up</h2>
-          <form className="signin-form">
+          <form className="signin-form" onSubmit={handleAuthentication}>
             <input
               type="text"
               placeholder="Full name"
               className="signin-input"
+              id="fullname"
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
             />
@@ -49,6 +62,7 @@ const [fullName, setFullName] = useState("")
               type="email"
               placeholder="Email address"
               className="signin-input"
+              id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -56,6 +70,7 @@ const [fullName, setFullName] = useState("")
               type="password"
               placeholder="Password"
               className="signin-input"
+              id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -93,6 +108,7 @@ const [fullName, setFullName] = useState("")
                 type="text"
                 placeholder="Email address"
                 className="signin-input"
+                id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -100,6 +116,7 @@ const [fullName, setFullName] = useState("")
                 type="password"
                 placeholder="Password"
                 className="signin-input"
+                id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
