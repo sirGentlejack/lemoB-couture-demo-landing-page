@@ -80,6 +80,11 @@ export default function Navbar() {
             <IoIosPerson className="signin-icon" />
             </Link><span className="tooltiptext">Login / Register</span>
           </div>
+          {/* <div>
+            <button>
+              <Link to="/signout">Sign out</Link>
+            </button>
+          </div> */}
       </div>
     </>
   );

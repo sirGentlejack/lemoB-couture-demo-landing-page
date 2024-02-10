@@ -25,7 +25,7 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/signin" element={<Signin />} />
-          <Route path="/dashboard" component={<Dashboard />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="*" element={<Navigate to="/dashboard" />} />
           <Route path="/successful" element={< Successful />} />
           <Route path="*" element={<Navigate to="/successful" />} />
