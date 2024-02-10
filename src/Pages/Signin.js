@@ -1,5 +1,9 @@
 import React, { useState } from "react";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { app } from "../Components/firebase";
 
@@ -28,10 +32,11 @@ export default function Signin() {
         // sign up
         await createUserWithEmailAndPassword(auth, email, password);
         // Authentication successful, you can redirect or perform additional actions here
-        navigate("/dashboard"); // Redirect to the dashboard
+        navigate("/successful"); // Redirect to the success page
       } else {
         // sign in
-        await auth.signInWithEmailAndPassword(auth, email, password);
+        await signInWithEmailAndPassword(auth, email, password);
+        navigate("/dashboard"); // Redirect to the dashboard
       }
     } catch (error) {
       console.error("Authentication Error: ", error.message);
