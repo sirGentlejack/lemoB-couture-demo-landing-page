@@ -13,6 +13,21 @@ export default function Dashboard( {user}) {
     }
   }, [user]);
 
+  function showUserGreeting(element, user) {
+    const displayName = user.displayName
+    
+    if (displayName) {
+        const userFirstName = displayName.split(" ")[0]
+        
+        element.textContent = `Hey ${userFirstName}, how are you?`
+    } else {
+        element.textContent = `Hey friend, how are you?`
+    }
+}
+const h2Element = document.querySelector(".user-greeting");
+if (h2Element) {
+  showUserGreeting(h2Element, user);
+}
 
   return (
     <div className="page dashboard">
@@ -20,7 +35,7 @@ export default function Dashboard( {user}) {
       <div className="app-container">
         <div className="user-section">
         <img src={photoURL} alt="" className="user-profile-picture" />
-        <h2>Hey {user.displayName}, how are you ?</h2>
+        <h2 className="user-greeting">friend </h2>
 
        </div>
       </div>
