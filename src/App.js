@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import "./App.css";
 import Navbar from "./Components/Navbar";
 import Bottom from "./Components/Bottom";
@@ -6,16 +7,22 @@ import Home from "../src/Pages/Home";
 import Gallery from "./Pages/Gallery";
 import Blog from "./Pages/Blog";
 import Contact from "./Pages/Contact";
-import { BrowserRouter as Router, Route, Routes, Navigate, } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import Signin from "./Pages/Signin";
 import Successful from "./sections/Successful";
 import Dashboard from "./Pages/Dashboard";
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   return (
     <Router>
       <div className="App">
-        <Navbar />
+        <Navbar isAuthenticated={isAuthenticated} />
 
         {/* Route components */}
         <Routes>
@@ -24,10 +31,13 @@ function App() {
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/signin" element={<Signin />} />
+          <Route
+            path="/signin"
+            element={<Signin setIsAuthenticated={setIsAuthenticated} />}
+          />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="*" element={<Navigate to="/dashboard" />} />
-          <Route path="/successful" element={< Successful />} />
+          <Route path="/successful" element={<Successful />} />
           <Route path="*" element={<Navigate to="/successful" />} />
         </Routes>
 

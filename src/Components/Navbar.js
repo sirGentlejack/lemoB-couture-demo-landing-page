@@ -5,13 +5,30 @@ import { Link } from "react-router-dom";
 import Lemob from "../images/Lemob.png";
 import { IoIosPerson } from "react-icons/io";
 import { FaSignOutAlt } from "react-icons/fa";
+import { getAuth, signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
-export default function Navbar({ isAuthenticated, onLogout }) {
+
+export default function Navbar({ isAuthenticated }) {
   const navRef = useRef();
 
   function showNavbar() {
     navRef.current.classList.toggle("responsive_nav");
   }
+
+  const auth = getAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        navigate("/signin");
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
   return (
     <>
       {/* mobile screens */}
@@ -43,30 +60,25 @@ export default function Navbar({ isAuthenticated, onLogout }) {
           </ul>
 
           {isAuthenticated ? (
-          <>
-            <div className="tooltip">
+            <>
+             <div className="tooltip" onClick={handleLogout}>
               <FaSignOutAlt
                 className="tooltip signin-icon"
-                onClick={onLogout}
+                onClick={handleLogout}
               />
               <span className="tooltiptext">Sign Out</span>
             </div>
-          </>
-        ) : (
-          <>
-            <div className="tooltip">
-              <Link to="/signin"  >
-            <IoIosPerson className="signin-icon" />
-            </Link>
-              <span className="tooltiptext">Login / Register</span>
-            </div>
-          </>
-        )}
-
-          <div>
-            <IoIosPerson className="tooltip" />
-            <span className="tooltiptext">Login / Register</span>
-          </div>
+            </>
+          ) : (
+            <>
+              <div className="tooltip">
+                <Link to="/signin">
+                  <IoIosPerson className="signin-icon" />
+                </Link>
+                <span className="tooltiptext">Login / Register</span>
+              </div>
+            </>
+          )}
           <button className="navbar_btn navbar_close">
             <TiCancel onClick={showNavbar} />
           </button>
@@ -75,6 +87,7 @@ export default function Navbar({ isAuthenticated, onLogout }) {
           <FiMenu onClick={showNavbar} />
         </button>
       </div>
+
 
       {/* wide screens */}
       <div className="header2 wide-header">
@@ -98,38 +111,27 @@ export default function Navbar({ isAuthenticated, onLogout }) {
             </li>
           </ul>
         </nav>
-        {/* <div className="tooltip">
-          <Link to="/signin"  >
-            <IoIosPerson className="signin-icon" />
-            </Link><span className="tooltiptext">Login / Register</span>
-          </div>
-          <div>
-            <div className="tooltip">
-            <FaSignOutAlt className="signin-icon" />
-            <span className="tooltiptext">Sign Out</span>
-            </div>
-          </div>*/}
 
         {isAuthenticated ? (
           <>
-            <div className="tooltip">
+            <div className="tooltip" onClick={handleLogout}>
               <FaSignOutAlt
                 className="tooltip signin-icon"
-                onClick={onLogout}
+                
               />
               <span className="tooltiptext">Sign Out</span>
             </div>
           </>
-        ) : (
+         ) : ( 
           <>
             <div className="tooltip">
-              <Link to="/signin"  >
-            <IoIosPerson className="signin-icon" />
-            </Link>
+              <Link to="/signin">
+                <IoIosPerson className="signin-icon" />
+              </Link>
               <span className="tooltiptext">Login / Register</span>
             </div>
           </>
-        )}
+         )} 
       </div>
     </>
   );

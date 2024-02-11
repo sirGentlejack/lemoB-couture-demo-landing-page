@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-   onAuthStateChanged
+  onAuthStateChanged,
+  GoogleAuthProvider,
+  signInWithPopup
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { app } from "../Components/firebase";
+import { FaGoogle } from "react-icons/fa";
 
-export default function Signin() {
+export default function Signin( {setIsAuthenticated} ) {
   const [isSigningUp, setIsSigningUp] = useState(true);
 
   //   for signin authetication
@@ -17,6 +20,8 @@ export default function Signin() {
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
+  const auth = getAuth(app);
+  const provider = new GoogleAuthProvider();
 
   //   to toggle between forms
   const toggleForm = () => {
@@ -24,20 +29,14 @@ export default function Signin() {
   };
 
   //   form authetication
-  
-  const auth = getAuth(app);
-
   const handleAuthentication = async (e) => {
     e.preventDefault(); // Add this line to prevent default form submission behavior
-
-    
 
     try {
       if (isSigningUp) {
         // sign up
         await createUserWithEmailAndPassword(auth, email, password);
-        // Authentication successful, you can redirect or perform additional actions here
-        navigate("/successful"); // Redirect to the success page
+          navigate("/successful");// Redirect to the success page
       } else {
         // sign in
         await signInWithEmailAndPassword(auth, email, password);
@@ -52,17 +51,41 @@ export default function Signin() {
     setPassword("");
   };
 
-  //   to check if user is signed in
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    navigate("/dashboard"); // Redirect to the dashboard
-  } else {
-    navigate("/signin"); // Redirect to the signin page
-  }
-});
+  //   google authetication
+  const handleGoogleAuthentication = async () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        console.log("Signed in with Google");
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        console.log(error.message);
+      });
+  };
+
+  //   to check if user is signed in or not
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setIsAuthenticated(true);
+        navigate("/dashboard"); // Redirect to the dashboard
+      } else {
+        setIsAuthenticated(false);
+        navigate("/signin"); // Redirect to the signin page
+      }
+    });
+
+    return () => {
+      unsubscribe();
+    }
+  }, [auth, setIsAuthenticated, navigate]);
+
+
+ 
 
   return (
     <div className="signin-page">
+
       {isSigningUp ? (
         // signup
         <div className="signup">
@@ -145,6 +168,12 @@ onAuthStateChanged(auth, (user) => {
               </p>
               <button type="submit" className="signin-btn">
                 <strong>Sign In</strong>
+              </button>
+              <button
+                onClick={handleGoogleAuthentication}
+                className="google-signin-btn"
+              >
+                <FaGoogle /> Sign in with Google
               </button>
             </form>
           </div>

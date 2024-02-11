@@ -216,6 +216,21 @@ body {
 .signin-btn:hover{
   background: rgb(240, 176, 15);
 }
+.google-signin-btn{
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 2px 1px 3px black;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 2s;
+  background: rgb(240, 176, 15);
+  color: black;
+}
+.google-signin-btn:hover{
+  background: black;
+  color: whitesmoke;
+}
 
 /* hero */
 .hero {
