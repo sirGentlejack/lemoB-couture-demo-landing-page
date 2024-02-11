@@ -4,8 +4,9 @@ import { TiCancel } from "react-icons/ti";
 import { Link } from "react-router-dom";
 import Lemob from "../images/Lemob.png";
 import { IoIosPerson } from "react-icons/io";
+import { FaSignOutAlt } from "react-icons/fa";
 
-export default function Navbar() {
+export default function Navbar({ isAuthenticated, onLogout }) {
   const navRef = useRef();
 
   function showNavbar() {
@@ -40,6 +41,28 @@ export default function Navbar() {
               <Link to="/contact">Contact</Link>
             </li>
           </ul>
+
+          {isAuthenticated ? (
+          <>
+            <div className="tooltip">
+              <FaSignOutAlt
+                className="tooltip signin-icon"
+                onClick={onLogout}
+              />
+              <span className="tooltiptext">Sign Out</span>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="tooltip">
+              <Link to="/signin"  >
+            <IoIosPerson className="signin-icon" />
+            </Link>
+              <span className="tooltiptext">Login / Register</span>
+            </div>
+          </>
+        )}
+
           <div>
             <IoIosPerson className="tooltip" />
             <span className="tooltiptext">Login / Register</span>
@@ -75,16 +98,38 @@ export default function Navbar() {
             </li>
           </ul>
         </nav>
-        <div className="tooltip">
+        {/* <div className="tooltip">
           <Link to="/signin"  >
             <IoIosPerson className="signin-icon" />
             </Link><span className="tooltiptext">Login / Register</span>
           </div>
-          {/* <div>
-            <button>
-              <Link to="/signout">Sign out</Link>
-            </button>
-          </div> */}
+          <div>
+            <div className="tooltip">
+            <FaSignOutAlt className="signin-icon" />
+            <span className="tooltiptext">Sign Out</span>
+            </div>
+          </div>*/}
+
+        {isAuthenticated ? (
+          <>
+            <div className="tooltip">
+              <FaSignOutAlt
+                className="tooltip signin-icon"
+                onClick={onLogout}
+              />
+              <span className="tooltiptext">Sign Out</span>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="tooltip">
+              <Link to="/signin"  >
+            <IoIosPerson className="signin-icon" />
+            </Link>
+              <span className="tooltiptext">Login / Register</span>
+            </div>
+          </>
+        )}
       </div>
     </>
   );

@@ -3,12 +3,14 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+   onAuthStateChanged
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { app } from "../Components/firebase";
 
 export default function Signin() {
   const [isSigningUp, setIsSigningUp] = useState(true);
+
   //   for signin authetication
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -22,10 +24,13 @@ export default function Signin() {
   };
 
   //   form authetication
+  
+  const auth = getAuth(app);
+
   const handleAuthentication = async (e) => {
     e.preventDefault(); // Add this line to prevent default form submission behavior
 
-    const auth = getAuth(app);
+    
 
     try {
       if (isSigningUp) {
@@ -36,7 +41,6 @@ export default function Signin() {
       } else {
         // sign in
         await signInWithEmailAndPassword(auth, email, password);
-        navigate("/dashboard"); // Redirect to the dashboard
       }
     } catch (error) {
       console.error("Authentication Error: ", error.message);
@@ -47,6 +51,15 @@ export default function Signin() {
     setEmail("");
     setPassword("");
   };
+
+  //   to check if user is signed in
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    navigate("/dashboard"); // Redirect to the dashboard
+  } else {
+    navigate("/signin"); // Redirect to the signin page
+  }
+});
 
   return (
     <div className="signin-page">
