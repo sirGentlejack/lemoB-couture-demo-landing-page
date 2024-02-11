@@ -19,6 +19,8 @@ import Dashboard from "./Pages/Dashboard";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState(null)
+
   return (
     <Router>
       <div className="App">
@@ -33,9 +35,9 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route
             path="/signin"
-            element={<Signin setIsAuthenticated={setIsAuthenticated} />}
+            element={<Signin setIsAuthenticated={setIsAuthenticated} setUser={setUser} />}
           />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard" element={<Dashboard user={user}/>} />
           <Route path="*" element={<Navigate to="/dashboard" />} />
           <Route path="/successful" element={<Successful />} />
           <Route path="*" element={<Navigate to="/successful" />} />

@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { app } from "../Components/firebase";
 import { FaGoogle } from "react-icons/fa";
 
-export default function Signin( {setIsAuthenticated} ) {
+export default function Signin( {setIsAuthenticated, setUser} ) {
   const [isSigningUp, setIsSigningUp] = useState(true);
 
   //   for signin authetication
@@ -69,6 +69,7 @@ export default function Signin( {setIsAuthenticated} ) {
       if (user) {
         setIsAuthenticated(true);
         navigate("/dashboard"); // Redirect to the dashboard
+        setUser(user);
       } else {
         setIsAuthenticated(false);
         navigate("/signin"); // Redirect to the signin page
@@ -78,7 +79,7 @@ export default function Signin( {setIsAuthenticated} ) {
     return () => {
       unsubscribe();
     }
-  }, [auth, setIsAuthenticated, navigate]);
+  }, [auth, setIsAuthenticated, setUser, navigate]);
 
 
  

@@ -1,31 +1,29 @@
-import React from "react";
-// // import { Link } from "react-router-dom";
-// import { getAuth, signOut } from "firebase/auth";
-// import { useNavigate } from "react-router-dom";
+import React, {useState, useEffect} from "react";
+import BlueKaftanImage from "../images/profile-svgrepo-com.svg";
 
-export default function Dashboard() {
-//     const auth = getAuth();
+export default function Dashboard( {user}) {
+  const [photoURL, setPhotoURL] = useState("");
 
-//     const navigate = useNavigate();
+  useEffect(() => {
+    if (user && user.photoURL) {
+      setPhotoURL(user.photoURL);
+    } else {
+      // If 'user' is null or 'photoURL' is not present, set a default image
+      setPhotoURL(BlueKaftanImage);
+    }
+  }, [user]);
 
-// const handleClick = () =>{
-//     signOut(auth).then(() => {
-//       // Sign-out successful.
-//         navigate("/signin");
-//     }).catch((error) => {
-//       // An error happened.
-//     });
-// };
 
-    return (
-        <div className="page dashboard">
-        <h1>Dashboard</h1>
+  return (
+    <div className="page dashboard">
+      <h1>Dashboard</h1>
+      <div className="app-container">
+        <div className="user-section">
+        <img src={photoURL} alt="" className="user-profile-picture" />
+        <h2>Hey {user.displayName}, how are you ?</h2>
 
-        {/* <div>
-            <button onClick={handleClick}>
-              sign out
-            </button>
-          </div> */}
-        </div>
-    );
+       </div>
+      </div>
+    </div>
+  );
 }
