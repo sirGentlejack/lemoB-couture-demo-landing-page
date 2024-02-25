@@ -155,16 +155,30 @@ body {
 }
 
 /* signin page */
+
+.signin-section{
+  display: flex;
+  justify-content: center;
+  margin: 16px auto;
+}
+
+.sigin-img{
+  width: 500px;
+  height: auto;
+border-radius: 10px;
+
+}
+
 .signin-page{
   border: none;
   width: 550px;
   height: 400x;
-  margin: 16px auto;
   background: rgb(240, 176, 15);
   border-radius: 10px;
   box-shadow: 2px 1px 3px black;
   z-index: 1;
 }
+
 .signin-form{
   display: flex;
   flex-direction: column;
