@@ -535,10 +535,11 @@ border-radius: 10px;
   flex-wrap: nowrap;
   overflow-x: auto;
 }
-
-/* footer */
-.bottom {
-  padding-top: 30px;
+/* fashion */
+.fashion1{
+  background: black;
+  margin-top: 10px;
+  border-radius: 10px;
 }
 
 .scroll-container {
@@ -546,6 +547,7 @@ border-radius: 10px;
   white-space: nowrap;
 }
 .bottom-para {
+  color: white;
   font-size: 20px;
   font-weight: 500;
   text-align: center;
@@ -588,6 +590,30 @@ border-radius: 10px;
     -webkit-transform: translateX(-100%);
     transform: translateX(-100%);
   }
+}
+
+.fashion2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: whitesmoke;
+  gap: 20px;
+  padding: 30px 0;
+}
+.fashion-text{
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.fashion-img{
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+}
+/* footer */
+.bottom {
+  padding-top: 1px;
 }
 .bottom2 {
   display: flex;
@@ -893,9 +919,9 @@ border-radius: 10px;
   .hero-content p {
     font-size: 17px;
   }
-  .hero-imghover {
+   .hero-imghover {
     display: none;
-  }
+  } 
   /* gallery */
   .Gallery {
     padding: 10px 20px;
@@ -964,6 +990,33 @@ border-radius: 10px;
   .testimonial-quote {
     padding: 50px 2px 5px 2px;
   }
+  /* fashion */
+
+  .fashion2{
+    display: block;
+    padding: 15px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .fashion-text{
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  .fashion-img-box{
+    display: flex;
+    justify-content: center;
+
+  }
+  .fashion-img{
+    width: 250px;
+    height: 250px;
+  }
+
+  /* bottom */
   .bottom2 {
     display: flex;
     flex-direction: column;
@@ -997,8 +1050,8 @@ border-radius: 10px;
     font-size: 18px;
   }
 }
-@media screen and (min-width: 701px) {
-  .hero-imghover {
+@media screen and (max-width: 901px) {
+  .hero-imghover{
     display: none;
   }
   .bottom2 {
@@ -1006,9 +1059,7 @@ border-radius: 10px;
     flex-direction: row;
   }
   .contact-us {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: block;
   }
   /* Testimonial */
   .Testimonials-big-box {
@@ -1035,5 +1086,18 @@ border-radius: 10px;
 
   .testimonial-quote {
     padding: 50px 2px 5px 2px;
+  }
+   /* fashion */
+
+   .fashion2{
+    padding: 10px 0;
+  }
+  .fashion-text{
+    width: 400px;
+  }
+  
+  .fashion-img{
+    width: 290px;
+    height: 290px;
   }
 }

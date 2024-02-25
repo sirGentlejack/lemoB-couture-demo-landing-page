@@ -49,7 +49,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <span class="hero-imghover">
+      <span className="hero-imghover">
         <img src={Bluekaftan} alt="lemob logo" width="400vw" />
       </span>
     </section>

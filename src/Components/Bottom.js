@@ -5,16 +5,7 @@ import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
 export default function Bottom() {
   return (
     <div className="bottom">
-      <div className="scroll-container">
-        <p className="bottom-para">
-          <i>
-            <b>
-              Welcome to a world where fashion meets craftsmanship. Welcome to
-              LemoB Couture.
-            </b>
-          </i>
-        </p>
-      </div>
+      
       <div className="bottom2">
         <div style={{ textAlign: "center" }}>
           <h2>Working Days</h2>
@@ -76,6 +67,7 @@ export default function Bottom() {
           </div>
         </div>
       </div>
+      <p>© 2024 LemoB Couture</p>
     </div>
   );
 }

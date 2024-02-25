@@ -16,6 +16,7 @@ import {
 import Signin from "./Pages/Signin";
 import Successful from "./sections/Successful";
 import Dashboard from "./Pages/Dashboard";
+import Fashion from "./Components/Fashion";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -43,6 +44,7 @@ function App() {
           <Route path="*" element={<Navigate to="/successful" />} />
         </Routes>
 
+        <Fashion />
         <Bottom />
       </div>
     </Router>
