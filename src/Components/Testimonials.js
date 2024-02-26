@@ -5,7 +5,7 @@ export default function Testimonials({ item }) {
   return (
     <>
       <div className="testimonials-box">
-        <div>
+        <div className="testimonials-header">
           <img
             src={require(`../images/${item.image}`)}
             alt="Testimonials"

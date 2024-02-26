@@ -93,7 +93,7 @@ export default function Signin({ setIsAuthenticated, setUser }) {
   };
 
   return (
-    <div className="signin-section">
+    <div className="signin-section page">
       <img
         src={isHovered ? fashionbg : fashionbg2 }
         className="sigin-img"

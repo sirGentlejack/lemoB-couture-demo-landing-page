@@ -50,7 +50,7 @@ export default function Bottom() {
         </div>
         
         <div className="contact-us">
-          <h3>Contact us:-</h3>
+          <h3>Contact us</h3>
           <div className=" bottom-socials">
             <div className="hero-sci ">
               <a href="/" target="_blank" rel="noreferrer">
