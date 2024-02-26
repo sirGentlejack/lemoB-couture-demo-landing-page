@@ -66,6 +66,14 @@ export default function Bottom() {
             </div>
           </div>
         </div>
+
+        <div>
+          <form className="bottom-form">
+            <h2>News Letter </h2>
+            <input type="Email" placeholder="Email" />
+            <button>Send</button>
+          </form>
+        </div>
       </div>
       <p>© 2024 LemoB Couture</p>
     </div>
