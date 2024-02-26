@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 
 export default function Successful() {
     const navigate = useNavigate();
@@ -46,7 +47,7 @@ export default function Successful() {
       </p>
       <button className="" onClick={() => navigate("/dashboard")}>Explore Your Dashboard</button>
       <p>
-        If you have any questions or need assistance, our dedicated support team
+        If you have any questions or need assistance, our dedicated <Link to="/contact">support team </Link>
         is here to help. Enjoy the world of custom tailoring with
         <strong>Lemo B Couture</strong>.
       </p>
