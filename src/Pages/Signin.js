@@ -14,7 +14,6 @@ import fashionbg from "../images/fashionbg1.jpg";
 import fashionbg2 from "../images/fashionbg2.jpg";
 
 
-
 export default function Signin({ setIsAuthenticated, setUser }) {
   const [isSigningUp, setIsSigningUp] = useState(true);
 
