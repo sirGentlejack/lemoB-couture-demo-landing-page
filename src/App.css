@@ -864,7 +864,7 @@ border-radius: 10px;
 .app-container {
   display: flex;
   flex-direction: column;
-  gap: 3em;
+  gap: 2em;
 }
 .user-section {
   display: flex;
@@ -877,6 +877,46 @@ border-radius: 10px;
   height: 3.75em;
   border-radius: 100%;
   border: var(--border-width) solid var(--dark-color);
+}
+.post-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.post-section textarea{
+  font-family: inherit;
+  padding: 0.8em;
+  border-radius: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 1em;
+  border: 0;
+  box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, .25);
+  resize: none;
+  height: 6em;
+}
+.post-section textarea::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: grey;
+  opacity: 1; /* Firefox */
+}
+
+.post-section textarea:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: grey;
+}
+
+.post-section textarea::-ms-input-placeholder { /* Microsoft Edge */
+  color: grey;
+}
+.post-section  button {
+  font-size: 1.1em;
+    text-align: center;
+    border: 3px solid black;
+    font-family: inherit;
+    padding: var(--element-padding);
+    border-radius: var(--element-border-radius);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* mobile view */

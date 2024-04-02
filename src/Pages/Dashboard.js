@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import defaultProfileImage from "../images/profile-svgrepo-com.svg";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../Components/firebase"; // Assuming you've initialized Firebase somewhere
 
 export default function Dashboard({ user }) {
   const [photoURL, setPhotoURL] = useState("");
+  const [postBody, setPostBody] = useState("");
 
   useEffect(() => {
     if (user && user.photoURL) {
       setPhotoURL(user.photoURL);
     } else {
-      // If 'user' is null or 'photoURL' is not present, set a default image
       setPhotoURL(defaultProfileImage);
     }
   }, [user]);
@@ -22,6 +24,21 @@ export default function Dashboard({ user }) {
     }
   }
 
+  async function handlePost() {
+    if (postBody.trim() !== "") {
+      try {
+        const docRef = await addDoc(collection(db, "posts"), {
+          body: postBody
+        });
+        console.log("Document written with ID: ", docRef.id);
+        // Clear the textarea
+        setPostBody("");
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
+    }
+  }
+
   return (
     <div className="page dashboard">
       <h1>Dashboard</h1>
@@ -31,8 +48,12 @@ export default function Dashboard({ user }) {
           <h2 className="user-greeting">{getUserGreeting(user)}</h2>
         </div>
         <div className="post-section">
-          <textarea placeholder="write down how you are feeling..."></textarea>
-          <button>Post </button>
+          <textarea
+            placeholder="write down how you are feeling..."
+            value={postBody}
+            onChange={(e) => setPostBody(e.target.value)}
+          ></textarea>
+          <button onClick={handlePost}>Post</button>
         </div>
       </div>
     </div>
