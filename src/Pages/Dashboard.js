@@ -28,7 +28,8 @@ export default function Dashboard({ user }) {
     if (postBody.trim() !== "") {
       try {
         const docRef = await addDoc(collection(db, "posts"), {
-          body: postBody
+          body: postBody,
+          userId: user.uid // Add the user's UID to the post
         });
         console.log("Document written with ID: ", docRef.id);
         // Clear the textarea
