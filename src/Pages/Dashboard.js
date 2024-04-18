@@ -30,7 +30,8 @@ export default function Dashboard({ user }) {
   }
 
   async function handlePost() {
-    if (postBody.trim() !== "" && selectedMood) {
+    // Check if user exists and has a uid property
+    if (user && user.uid && postBody.trim() !== "" && selectedMood) {
       try {
         const docRef = await addDoc(collection(db, "posts"), {
           body: postBody,
@@ -46,7 +47,9 @@ export default function Dashboard({ user }) {
       } catch (e) {
         console.error("Error adding document: ", e);
       }
-    }
+    }else{
+        console.error("User is null or does not have a UID property.");
+      }
   }
 
   // select emoji
