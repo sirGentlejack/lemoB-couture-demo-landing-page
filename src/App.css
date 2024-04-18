@@ -861,6 +861,9 @@ border-radius: 10px;
 }
 
 /* dashboard */
+.dashboard{
+  max-width: 600px;
+}
 .app-container {
   display: flex;
   flex-direction: column;
@@ -877,6 +880,38 @@ border-radius: 10px;
   height: 3.75em;
   border-radius: 100%;
   border: var(--border-width) solid var(--dark-color);
+}
+.emoji{
+  display: flex;
+  justify-content: space-around;
+}
+.emoji>button{
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.emoji>button>img{
+  width: 60px;
+  height: 60px;
+  border-radius: 50% ;
+}
+.emoji>button>img:hover{
+  transform: scale(1.2);
+}
+.selected-emoji {
+  transform: scale(1.2);
+  opacity: 1;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.unselected-emoji {
+  transform: scale(1);
+  opacity: 0.5;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 .post-section {
   display: flex;

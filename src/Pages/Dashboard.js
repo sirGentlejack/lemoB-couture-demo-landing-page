@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from "react";
 import defaultProfileImage from "../images/profile-svgrepo-com.svg";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../Components/firebase"; // Assuming you've initialized Firebase somewhere
+import love from "../images/love.jpeg";
+import happy from "../images/happy.jpeg";
+import sad from "../images/sad.jpeg";
+import suprised from "../images/surprised.jpeg";
 
 export default function Dashboard({ user }) {
   const [photoURL, setPhotoURL] = useState("");
   const [postBody, setPostBody] = useState("");
+  const [selectedMood, setSelectedMood] = useState("");
 
   useEffect(() => {
     if (user && user.photoURL) {
@@ -25,19 +30,28 @@ export default function Dashboard({ user }) {
   }
 
   async function handlePost() {
-    if (postBody.trim() !== "") {
+    if (postBody.trim() !== "" && selectedMood) {
       try {
         const docRef = await addDoc(collection(db, "posts"), {
           body: postBody,
-          userId: user.uid // Add the user's UID to the post
+          userId: user.uid, // Add the user's UID to the post
+          createdAt: serverTimestamp(),
+          mood: selectedMood
         });
         console.log("Document written with ID: ", docRef.id);
         // Clear the textarea
         setPostBody("");
+        // Reset mood state
+        setSelectedMood("");
       } catch (e) {
         console.error("Error adding document: ", e);
       }
     }
+  }
+
+  // select emoji
+  function selectMood(mood) {
+    setSelectedMood(mood);
   }
 
   return (
@@ -47,6 +61,24 @@ export default function Dashboard({ user }) {
         <div className="user-section">
           <img src={photoURL} alt="" className="user-profile-picture" />
           <h2 className="user-greeting">{getUserGreeting(user)}</h2>
+        </div>
+        <div className="emoji">
+          <button id="happy"  className={selectedMood === "happy" ? "selected-emoji" : "unselected-emoji"}  onClick={() => selectMood("happy")}>
+            <img src={happy} alt="" />
+            Happy
+          </button>
+          <button id="sad" className={selectedMood === "sad" ? "selected-emoji" : "unselected-emoji"} onClick={() => selectMood("sad")}>
+            <img src={sad} alt="" />
+            Sad
+          </button>
+          <button id="love" className={selectedMood === "love" ? "selected-emoji" : "unselected-emoji"} onClick={() => selectMood("love")}>
+            <img src={love} alt="" />
+            Love
+          </button>
+          <button id="surprised" className={selectedMood === "surprised" ? "selected-emoji" : "unselected-emoji"} onClick={() => selectMood("surprised")}>
+            <img src={suprised} alt="" />
+            Surprised
+          </button>
         </div>
         <div className="post-section">
           <textarea
