@@ -953,6 +953,38 @@ border-radius: 10px;
     width: 100%;
     box-sizing: border-box;
 }
+.posts-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+margin-bottom: 1.8em;
+}
+
+.post {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--secondary-color);
+  padding: 0.8em;
+  border-radius: var(--element-border-radius);
+}
+.post .post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post .post-header h3 {
+  font-size: 1em;
+}
+
+.post .post-header img {
+  width: 2em;
+  height: 2em;
+}
+.post p {
+  font-size: 0.9em;
+  line-height: 1.3em;
+}
 
 /* mobile view */
 /* @media screen and (max-width:400px) {
