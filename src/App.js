@@ -35,13 +35,20 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/gallery" element={<Gallery />} />
 
-{/* Use PrivateRoute to protect the /blog route */}
-            <Route  path="/" element={<PrivateRoute />}>
-              {/* Nested routes for /blog */}
-              <Route  path="/blog" element={<Blog />} />
-            </Route>
+            {/* Use PrivateRoute to protect the /blog route */}
+            {/* <Route  path="/" element={<PrivateRoute />}> */}
+            {/* Nested routes for /blog */}
+            <Route  path="/blog" element={<Blog />} />
+            {/* </Route> */}
+            {/* <Route path="/blog" element={<PrivateRoute element={<Blog />} />} /> */}
 
             <Route path="/contact" element={<Contact />} />
+
+            {/* <Route 
+              path="/dashboard"
+             element={<PrivateRoute element={<Dashboard user={user} />} />}
+            />  */}
+
             <Route
               path="/signin"
               element={
@@ -51,8 +58,10 @@ function App() {
                 />
               }
             />
-            <Route path="/dashboard" element={<Dashboard user={user} />} />
-            <Route path="*" element={<Navigate to="/dashboard" />} />
+            {/* <Route  path="/" element={<PrivateRoute />}> */}
+            <Route path="/dashboard" element={<Dashboard user={user} />} /> 
+             <Route path="*" element={<Navigate to="/dashboard" />} /> 
+             {/* </Route>  */}
             <Route path="/successful" element={<Successful />} />
             <Route path="*" element={<Navigate to="/successful" />} />
           </Routes>

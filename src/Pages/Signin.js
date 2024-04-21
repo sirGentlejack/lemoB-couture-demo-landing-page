@@ -41,10 +41,13 @@ export default function Signin({ setIsAuthenticated, setUser }) {
       if (isSigningUp) {
         // sign up
         await createUserWithEmailAndPassword(auth, email, password);
+        setIsAuthenticated(true); // Set isAuthenticated to true upon successful sign-up
         navigate("/successful"); // Redirect to the success page
       } else {
         // sign in
         await signInWithEmailAndPassword(auth, email, password);
+        setIsAuthenticated(true); // Set isAuthenticated to true upon successful sign-up
+        navigate("/dashboard"); // Redirect to the dashboard
       }
     } catch (error) {
       console.error("Authentication Error: ", error.message);

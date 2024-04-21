@@ -86,6 +86,7 @@ export default function Dashboard({ user }) {
         fetchedPosts.push(doc.data());
       });
       setPostsEl(fetchedPosts);
+      postsEl("");
     } catch (error) {
       console.error("Error fetching posts: ", error);
     }
@@ -106,6 +107,18 @@ export default function Dashboard({ user }) {
         return defaultProfileImage;
     }
   }
+
+  // to convert new lines to break tags
+
+  function replaceNewlinesWithBrTags(inputString) {
+    return inputString.split('\n').map((line, index) => (
+      <React.Fragment key={index}>
+        {line}
+        <br />
+      </React.Fragment>
+    ));
+  }
+  
 
   return (
     <div className="page dashboard">
@@ -162,7 +175,7 @@ export default function Dashboard({ user }) {
                 <h3>{displayDate(post.createdAt)}</h3>
                 <img src={getMoodImage(post.mood)} alt="" />
               </div>
-              <p>{post.body}</p>
+              <p>{replaceNewlinesWithBrTags(post.body)}</p>
             </div>
           ))}
         </div>

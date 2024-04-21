@@ -55,6 +55,9 @@ export default function Navbar({ isAuthenticated }) {
               <Link to="/blog">Blog</Link>
             </li>
             <li>
+              <Link to="/dashboard">Dashboard</Link>
+            </li>
+            <li>
               <Link to="/contact">Contact</Link>
             </li>
           </ul>
@@ -105,6 +108,9 @@ export default function Navbar({ isAuthenticated }) {
             </li>
             <li>
               <Link to="/blog">Blog</Link>
+            </li>
+            <li>
+              <Link to="/dashboard">Dashboard</Link>
             </li>
             <li>
               <Link to="/contact">Contact</Link>
