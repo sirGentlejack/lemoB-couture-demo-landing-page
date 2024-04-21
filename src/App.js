@@ -17,7 +17,7 @@ import Signin from "./Pages/Signin";
 import Successful from "./sections/Successful";
 import Dashboard from "./Pages/Dashboard";
 import Fashion from "./Components/Fashion";
-import PrivateRoute from "./Components/PrivateRoute";
+// import PrivateRoute from "./Components/PrivateRoute";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);

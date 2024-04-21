@@ -4,7 +4,10 @@ import {
   collection,
   addDoc,
   serverTimestamp,
-  getDocs,
+  onSnapshot,
+  query,
+  where,
+  orderBy,
 } from "firebase/firestore";
 import { db } from "../Components/firebase";
 import love from "../images/love.jpeg";
@@ -17,6 +20,8 @@ export default function Dashboard({ user }) {
   const [postBody, setPostBody] = useState("");
   const [selectedMood, setSelectedMood] = useState("");
   const [postsEl, setPostsEl] = useState([]);
+
+  const collectionName = "posts";
 
   useEffect(() => {
     if (user && user.photoURL) {
@@ -38,9 +43,9 @@ export default function Dashboard({ user }) {
   async function handlePost() {
     if (user && user.uid && postBody.trim() !== "" && selectedMood) {
       try {
-        const docRef = await addDoc(collection(db, "posts"), {
+        const docRef = await addDoc(collection(db, collectionName), {
           body: postBody,
-          userId: user.uid,
+          uid: user.uid,
           createdAt: serverTimestamp(),
           mood: selectedMood,
         });
@@ -60,13 +65,28 @@ export default function Dashboard({ user }) {
   }
 
   function displayDate(firebaseDate) {
+    if (!firebaseDate) {
+      return "Date processing";
+    }
+
     const date = firebaseDate.toDate();
 
     const day = date.getDate();
     const year = date.getFullYear();
 
     const monthNames = [
-      "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
     ];
     const month = monthNames[date.getMonth()];
 
@@ -76,20 +96,6 @@ export default function Dashboard({ user }) {
     minutes = minutes < 10 ? "0" + minutes : minutes;
 
     return `${day} ${month} ${year} - ${hours}:${minutes}`;
-  }
-
-  async function fetchOnceAndRenderPostsFromDB() {
-    try {
-      const querySnapshot = await getDocs(collection(db, "posts"));
-      const fetchedPosts = [];
-      querySnapshot.forEach((doc) => {
-        fetchedPosts.push(doc.data());
-      });
-      setPostsEl(fetchedPosts);
-      postsEl("");
-    } catch (error) {
-      console.error("Error fetching posts: ", error);
-    }
   }
 
   function getMoodImage(mood) {
@@ -111,14 +117,36 @@ export default function Dashboard({ user }) {
   // to convert new lines to break tags
 
   function replaceNewlinesWithBrTags(inputString) {
-    return inputString.split('\n').map((line, index) => (
+    return inputString.split("\n").map((line, index) => (
       <React.Fragment key={index}>
         {line}
         <br />
       </React.Fragment>
     ));
   }
-  
+
+  // real time posts
+  function fetchInRealtimeAndRenderPostsFromDB(user) {
+    const postsRef = collection(db, collectionName);
+
+    const q = query(
+      postsRef,
+      where("uid", "==", user.uid),
+      orderBy("createdAt", "desc")
+    );
+
+    onSnapshot(q, (querySnapshot) => {
+      const newPosts = [];
+      querySnapshot.forEach((doc) => {
+        newPosts.push(doc.data());
+      });
+      setPostsEl(newPosts);
+    });
+  }
+
+  useEffect(() => {
+    fetchInRealtimeAndRenderPostsFromDB(user);
+  }, []);
 
   return (
     <div className="page dashboard">
@@ -130,28 +158,38 @@ export default function Dashboard({ user }) {
         </div>
         <div className="emoji">
           <button
-            className={selectedMood === "happy" ? "selected-emoji" : "unselected-emoji"}
+            className={
+              selectedMood === "happy" ? "selected-emoji" : "unselected-emoji"
+            }
             onClick={() => selectMood("happy")}
           >
             <img src={happy} alt="" />
             Happy
           </button>
           <button
-            className={selectedMood === "sad" ? "selected-emoji" : "unselected-emoji"}
+            className={
+              selectedMood === "sad" ? "selected-emoji" : "unselected-emoji"
+            }
             onClick={() => selectMood("sad")}
           >
             <img src={sad} alt="" />
             Sad
           </button>
           <button
-            className={selectedMood === "love" ? "selected-emoji" : "unselected-emoji"}
+            className={
+              selectedMood === "love" ? "selected-emoji" : "unselected-emoji"
+            }
             onClick={() => selectMood("love")}
           >
             <img src={love} alt="" />
             Love
           </button>
           <button
-            className={selectedMood === "surprised" ? "selected-emoji" : "unselected-emoji"}
+            className={
+              selectedMood === "surprised"
+                ? "selected-emoji"
+                : "unselected-emoji"
+            }
             onClick={() => selectMood("surprised")}
           >
             <img src={suprised} alt="" />
@@ -165,7 +203,25 @@ export default function Dashboard({ user }) {
             onChange={(e) => setPostBody(e.target.value)}
           ></textarea>
           <button onClick={handlePost}>Post</button>
-          <button onClick={fetchOnceAndRenderPostsFromDB}>Fetch posts</button>
+        </div>
+
+        <div className="filters-and-posts-section">
+          <div className="filters-section">
+            <button id="today-filter-btn" className="filter-btn">
+              Today
+            </button>
+            <button id="week-filter-btn" className="filter-btn">
+              Week
+            </button>
+            <button id="month-filter-btn" className="filter-btn">
+              Month
+            </button>
+            <button id="all-filter-btn" className="filter-btn">
+              All
+            </button>
+          </div>
+
+          <div id="posts" className="posts-section"></div>
         </div>
 
         <div id="posts" className="posts-section">
