@@ -986,6 +986,32 @@ margin-bottom: 1.8em;
   line-height: 1.3em;
 }
 
+.filters-and-posts-section {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6em;
+}
+
+.filters-section {
+  display: flex;
+  gap: 0.4em;
+}
+
+.filter-btn {
+  color: var(--dark-color);
+  font-size: 0.9em;
+  padding: 0.3em;
+  background-color: transparent;
+}
+
+.selected-filter {
+  color: var(--white-color);
+  background-color: var(--dark-color);
+}
+
+
+
 /* mobile view */
 /* @media screen and (max-width:400px) {
 

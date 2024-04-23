@@ -20,6 +20,7 @@ export default function Dashboard({ user }) {
   const [postBody, setPostBody] = useState("");
   const [selectedMood, setSelectedMood] = useState("");
   const [postsEl, setPostsEl] = useState([]);
+  const [filterBtn, setFilterBtn] = useState("all");
 
   const collectionName = "posts";
 
@@ -30,6 +31,10 @@ export default function Dashboard({ user }) {
       setPhotoURL(defaultProfileImage);
     }
   }, [user]);
+
+  useEffect(() => {
+    fetchPosts(user, filterBtn);
+  }, [user, filterBtn]);
 
   function getUserGreeting(user) {
     if (user && user.displayName) {
@@ -126,16 +131,8 @@ export default function Dashboard({ user }) {
   }
 
   // real time posts
-  function fetchInRealtimeAndRenderPostsFromDB(user) {
-    const postsRef = collection(db, collectionName);
-
-    const q = query(
-      postsRef,
-      where("uid", "==", user.uid),
-      orderBy("createdAt", "desc")
-    );
-
-    onSnapshot(q, (querySnapshot) => {
+  function fetchInRealtimeAndRenderPostsFromDB(query, user) {
+    onSnapshot(query, (querySnapshot) => {
       const newPosts = [];
       querySnapshot.forEach((doc) => {
         newPosts.push(doc.data());
@@ -145,8 +142,74 @@ export default function Dashboard({ user }) {
   }
 
   useEffect(() => {
-    fetchInRealtimeAndRenderPostsFromDB(user);
+    const postsRef = collection(db, collectionName);
+  
+    const q = query(
+      postsRef,
+      where("uid", "==", user.uid),
+      orderBy("createdAt", "desc")
+    );
+  
+    fetchInRealtimeAndRenderPostsFromDB(q);
   }, []);
+
+  //   // fetch posts from db
+
+  async function fetchPosts(user, filter) {
+    const postsRef = collection(db, collectionName);
+    let q;
+
+    switch (filter) {
+      case "today":
+        const startOfDay = new Date();
+        startOfDay.setHours(0, 0, 0, 0);
+        const endOfDay = new Date();
+        endOfDay.setHours(23, 59, 59, 999);
+        q = query(
+          postsRef,
+          where("uid", "==", user.uid),
+          where("createdAt", ">=", startOfDay),
+          where("createdAt", "<=", endOfDay),
+          orderBy("createdAt", "desc")
+        );
+        break;
+      case "week":
+        // Logic for fetching posts for the week
+        break;
+      case "month":
+        // Logic for fetching posts for the month
+        break;
+      case "all":
+        q = query(
+          postsRef,
+          where("uid", "==", user.uid),
+          orderBy("createdAt", "desc")
+        );
+        break;
+      default:
+        q = query(
+          postsRef,
+          where("uid", "==", user.uid),
+          orderBy("createdAt", "desc")
+        );
+        break;
+    }
+
+    if (q) {
+      const unsubscribe = onSnapshot(q, (querySnapshot) => {
+        const newPosts = [];
+        querySnapshot.forEach((doc) => {
+          newPosts.push(doc.data());
+        });
+        setPostsEl(newPosts);
+      });
+      return unsubscribe;
+    }
+    fetchInRealtimeAndRenderPostsFromDB(q, user)
+  }
+  function handleFilterChange(filter) {
+    setFilterBtn(filter);
+  }
 
   return (
     <div className="page dashboard">
@@ -207,21 +270,35 @@ export default function Dashboard({ user }) {
 
         <div className="filters-and-posts-section">
           <div className="filters-section">
-            <button id="today-filter-btn" className="filter-btn">
+            <button
+              id="today-filter-btn"
+              onClick={() => handleFilterChange("today")}
+              className={filterBtn === "today" ? "selected-filter" : ""}
+            >
               Today
             </button>
-            <button id="week-filter-btn" className="filter-btn">
+            <button
+              id="week-filter-btn"
+              onClick={() => handleFilterChange("week")}
+              className={filterBtn === "week" ? "selected-filter" : ""}
+            >
               Week
             </button>
-            <button id="month-filter-btn" className="filter-btn">
+            <button
+              id="month-filter-btn"
+              onClick={() => handleFilterChange("month")}
+              className={filterBtn === "month" ? "selected-filter" : ""}
+            >
               Month
             </button>
-            <button id="all-filter-btn" className="filter-btn">
+            <button
+              id="all-filter-btn"
+              onClick={() => handleFilterChange("all")}
+              className={filterBtn === "all" ? "selected-filter" : ""}
+            >
               All
             </button>
           </div>
-
-          <div id="posts" className="posts-section"></div>
         </div>
 
         <div id="posts" className="posts-section">
